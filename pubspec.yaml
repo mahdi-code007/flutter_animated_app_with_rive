@@ -17,12 +17,14 @@ dependencies:
   rive: ^0.11.14
   flutter_svg: ^2.0.7
   flutter_screenutil: ^5.9.0
+  flutter_keyboard_visibility: ^5.4.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+
 
 
 flutter:

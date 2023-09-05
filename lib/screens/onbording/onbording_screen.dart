@@ -3,9 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_app_with_rive/screens/onbording/widgets/animated_btn.dart';
 import 'package:flutter_animated_app_with_rive/screens/onbording/widgets/custom_sign_in_dialog.dart';
-import 'package:flutter_animated_app_with_rive/screens/onbording/widgets/sign_in_form.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rive/rive.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -17,13 +16,27 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   bool isSignInDialogShown = false;
+  bool isKeyboardVisible = false;
   late RiveAnimationController _btnAnimationController;
-
+  final KeyboardVisibilityController _keyboardVisibilityController = KeyboardVisibilityController();
   @override
   void initState() {
     _btnAnimationController = OneShotAnimation('active', autoplay: false);
     super.initState();
+    _keyboardVisibilityController.onChange.listen((bool visible) {
+      print('kkkkkkkkkkk $visible');
+      if (visible) {
+        setState(() {
+          isKeyboardVisible = true;
+        });
+      } else {
+        setState(() {
+          isKeyboardVisible = false;
+        });
+      }
+    });
   }
+
 
   @override
   Widget build(BuildContext context) {
